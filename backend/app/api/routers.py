@@ -12,6 +12,12 @@ router = APIRouter()
 def health_check():
     return {"status": "ok"}
 
+# handle preflight request
+@router.options("/search")
+async def options_search():
+    """Handle CORS preflight for /search"""
+    return {}
+
 @router.post("/search")
 async def search(
     request: SearchRequest, 
