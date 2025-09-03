@@ -13,4 +13,5 @@ dependencies = [
     "requests>=2.32.5",
     "sentence-transformers>=5.1.0",
     "uvicorn[standard]>=0.35.0",
+    "weaviate-client>=4.16.9",
 ]

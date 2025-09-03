@@ -8,14 +8,20 @@ class EmbeddingsService:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
 
-    def chunk_text(self, text: str, max_tokens: int = 500):
+    def chunk_text(self, text: str, max_tokens: int = 500, return_token_counts: bool = False):
         """Split text into chunks based on token length."""
         tokens = self.tokenizer.encode(text, add_special_tokens=False)
         chunks = []
+        token_counts = []
+        
         for i in range(0, len(tokens), max_tokens):
             chunk_tokens = tokens[i:i+max_tokens]
             chunk_text = self.tokenizer.decode(chunk_tokens)
             chunks.append(chunk_text)
+            token_counts.append(len(chunk_tokens))
+        
+        if return_token_counts:
+            return chunks, token_counts
         return chunks
 
     def embed_texts(self, texts: list[str]):
