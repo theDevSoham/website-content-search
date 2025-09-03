@@ -1,0 +1,30 @@
+# backend
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Editor-specific files
+.vscode/ # VS Code settings, if applicable
+.idea/   # PyCharm/IntelliJ IDEA settings, if applicable
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Database files (if using SQLite or similar)
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables
+.env
+.env.*
