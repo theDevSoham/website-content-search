@@ -8,7 +8,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /app
 
 # 3. Copy the application into the container.
-COPY backend/ .  
+COPY ./ .
 
 # 5. Install dependencies with uv
 RUN uv sync --frozen --no-cache
