@@ -1,0 +1,31 @@
+# Ignore virtual environments created by uv or venv
+.venv/
+env/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore common build and distribution artifacts
+dist/
+build/
+*.egg-info/
+
+# Ignore editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ignore local configuration files that should not be in the image
+.env
+.flaskenv
+
+# Ignore logs and temporary files
+*.log
+tmp/
+
+# Ignore Git-related files
+.git/
+.gitignore

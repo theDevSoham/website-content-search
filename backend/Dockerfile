@@ -1,25 +1,20 @@
 # 1. Base image
 FROM python:3.11-slim
 
-# 2. Install uv
-RUN pip install --no-cache-dir uv
+# 2. Install uv.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# 3. Set work directory
-WORKDIR /app
-
-# 4. Copy dependency files
-COPY pyproject.toml uv.lock* ./
-
-# 5. Install dependencies with uv
-RUN uv pip install --system --no-cache .
-
-# 6. Copy the app code
+# 3. Copy the application into the container.
 COPY . .
 
-# 7. Expose port
+# 4. Set work directory
+WORKDIR /app
+
+# 5. Install dependencies with uv
+RUN uv sync --frozen --no-cache
+
+# 6. Expose the port (Render auto-detects $PORT)
 EXPOSE 8000
 
-# 8. Run with Gunicorn + Uvicorn workers
-# CMD ["uv","run","gunicorn","-k","uvicorn.workers.UvicornWorker","app.main:app","--bind","0.0.0.0:${PORT:-8000}","--workers","4","--reload"]
-# CMD [ "uvicorn main:app --host 0.0.0.0 --port $PORT" ]
-CMD ["uv","run","uvicorn","app.main:app","--reload","--host","0.0.0.0","--port","${PORT:-8000}","--reload-dir","app"]
+# 7. Run with Gunicorn + Uvicorn workers
+CMD ["uv", "run", "uvicorn", "app.main:app", "--port", "$PORT", "--host", "0.0.0.0"]
