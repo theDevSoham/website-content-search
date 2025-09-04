@@ -21,4 +21,5 @@ EXPOSE 8000
 
 # 8. Run with Gunicorn + Uvicorn workers
 # CMD ["uv","run","gunicorn","-k","uvicorn.workers.UvicornWorker","app.main:app","--bind","0.0.0.0:${PORT:-8000}","--workers","4","--reload"]
-CMD [ "uvicorn main:app --host 0.0.0.0 --port $PORT" ]
+# CMD [ "uvicorn main:app --host 0.0.0.0 --port $PORT" ]
+CMD ["uv","run","uvicorn","app.main:app","--reload","--host","0.0.0.0","--port","8000","--reload-dir","app"]
