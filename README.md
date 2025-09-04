@@ -126,6 +126,11 @@ cd frontend
 npm run build
 ```
 
+#### There is a shell script written for the whole docker container to run. Use it via:
+```bash
+cd backend && ./run.sh
+```
+
 ---
 
 ## ⚡ Gunicorn + Uvicorn Setup (Backend)
