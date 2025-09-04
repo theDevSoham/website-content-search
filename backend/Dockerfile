@@ -17,4 +17,4 @@ RUN uv sync --frozen --no-cache
 EXPOSE 8000
 
 # 7. Run with Gunicorn + Uvicorn workers
-CMD uv run uvicorn main:app --host 0.0.0.0 --port $PORT
+CMD uv run uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
