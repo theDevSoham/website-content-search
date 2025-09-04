@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8000
 
 # 8. Run with Gunicorn + Uvicorn workers
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "app.main:app", "--workers", "4", "--bind", "0.0.0.0:8000", "--workers", "1", "--reload"]
+CMD ["uv","run","gunicorn","-k","uvicorn.workers.UvicornWorker","app.main:app","--bind","0.0.0.0:8000","--workers","4","--reload"]
