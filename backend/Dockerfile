@@ -17,7 +17,7 @@ RUN uv pip install --system --no-cache .
 COPY . .
 
 # 7. Expose port
-EXPOSE 10000
+EXPOSE 8000
 
 # 8. Run with Gunicorn + Uvicorn workers
 CMD ["uv","run","gunicorn","-k","uvicorn.workers.UvicornWorker","app.main:app","--bind","0.0.0.0:${PORT:-8000}","--workers","4","--reload"]
