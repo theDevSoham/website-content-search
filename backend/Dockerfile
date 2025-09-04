@@ -4,11 +4,11 @@ FROM python:3.11-slim
 # 2. Install uv.
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# 3. Copy the application into the container.
-COPY . .
-
 # 4. Set work directory
 WORKDIR /app
+
+# 3. Copy the application into the container.
+COPY backend/ .  
 
 # 5. Install dependencies with uv
 RUN uv sync --frozen --no-cache
