@@ -13,8 +13,11 @@ COPY ./ .
 # 5. Install dependencies with uv
 RUN uv sync --frozen --no-cache
 
+# Make sure run.sh is executable
+RUN chmod +x run.sh
+
 # 6. Expose the port (Render auto-detects $PORT)
 EXPOSE 8000
 
 # 7. Run with Gunicorn + Uvicorn workers
-CMD uv run uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+CMD ["./run.sh"]
